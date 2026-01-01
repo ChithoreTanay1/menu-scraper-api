@@ -1,4 +1,4 @@
-package com.taskflow.entity;
+package com.taskflow.menuscraper.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;

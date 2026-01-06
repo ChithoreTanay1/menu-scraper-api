@@ -7,29 +7,10 @@ import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import java.util.Currency;
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 @Validated
 public class ValidationService {
-
-    private static final Set<String> VALID_CURRENCIES = new HashSet<>();
-
-    static {
-        // Add common ISO currency codes
-        VALID_CURRENCIES.add("USD");
-        VALID_CURRENCIES.add("EUR");
-        VALID_CURRENCIES.add("GBP");
-        VALID_CURRENCIES.add("JPY");
-        VALID_CURRENCIES.add("CAD");
-        VALID_CURRENCIES.add("AUD");
-        VALID_CURRENCIES.add("CHF");
-        VALID_CURRENCIES.add("CNY");
-        VALID_CURRENCIES.add("INR");
-        VALID_CURRENCIES.add("BRL");
-        VALID_CURRENCIES.add("MXN");
-    }
 
     public void validateMenuItem(@Valid MenuItemRequest request) {
         // Additional business validation
@@ -41,12 +22,17 @@ public class ValidationService {
             throw new IllegalArgumentException("Price must have at most 2 decimal places");
         }
 
-        // Validate currency format
-        String currency = request.getCurrency().toUpperCase();
-        if (!isValidCurrency(currency)) {
-            throw new IllegalArgumentException("Invalid currency code: " + currency);
+        // Validate currency format - use ISO currency validation only
+        String currency = request.getCurrency();
+        if (currency == null || currency.trim().isEmpty()) {
+            throw new IllegalArgumentException("Currency code is required");
         }
-        request.setCurrency(currency);
+
+        String normalizedCurrency = currency.toUpperCase().trim();
+        if (!isValidCurrency(normalizedCurrency)) {
+            throw new IllegalArgumentException("Invalid currency code: " + normalizedCurrency);
+        }
+        // Note: Currency normalization should be handled by the service layer, not here
     }
 
     private boolean isValidCurrency(String currencyCode) {
@@ -55,12 +41,11 @@ public class ValidationService {
         }
 
         try {
-            // Check if it's a valid ISO currency
+            // Validate using ISO 4217 currency codes
             Currency.getInstance(currencyCode);
             return true;
         } catch (IllegalArgumentException e) {
-            // Also check against our allowed list
-            return VALID_CURRENCIES.contains(currencyCode);
+            return false;
         }
     }
 }

@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "restaurant_name": "Single Test Restaurant",
+      "source_url": "https://single-test.com/menu",
+      "name": "Single Test Item",
+      "description": "Testing single item",
+      "price": "11.11",
+      "currency": "USD"
+    }
+  ]
+}

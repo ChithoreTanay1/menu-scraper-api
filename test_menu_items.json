@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "restaurant_name": "Test Restaurant 1",
+      "source_url": "https://test-restaurant-1.com/menu",
+      "name": "Spaghetti Carbonara",
+      "description": "Traditional Italian pasta with eggs, cheese, pancetta, and black pepper",
+      "price": "15.99",
+      "currency": "USD"
+    },
+    {
+      "restaurant_name": "Test Restaurant 1",
+      "source_url": "https://test-restaurant-1.com/menu",
+      "name": "Caesar Salad",
+      "description": "Fresh romaine lettuce with Caesar dressing, croutons, and parmesan",
+      "price": "12.50",
+      "currency": "USD"
+    },
+    {
+      "restaurant_name": "Test Restaurant 2",
+      "source_url": "https://test-restaurant-2.com/menu",
+      "name": "Margherita Pizza",
+      "description": "Classic pizza with tomato sauce, mozzarella, and basil",
+      "price": "18.75",
+      "currency": "EUR"
+    },
+    {
+      "restaurant_name": "Test Restaurant 3",
+      "source_url": "https://test-restaurant-3.com/menu",
+      "name": "Chicken Tikka Masala",
+      "description": "Grilled chicken in creamy tomato sauce",
+      "price": "16.99",
+      "currency": "GBP"
+    },
+    {
+      "restaurant_name": "Test Restaurant 3",
+      "source_url": "https://test-restaurant-3.com/menu",
+      "name": "Garlic Naan",
+      "description": "Freshly baked flatbread with garlic",
+      "price": "4.50",
+      "currency": "GBP"
+    },
+    {
+      "restaurant_name": "Test Restaurant 4",
+      "source_url": "https://test-restaurant-4.com/menu",
+      "name": "Sushi Platter",
+      "description": "Assorted sushi and sashimi",
+      "price": "28.99",
+      "currency": "USD"
+    }
+  ]
+}
